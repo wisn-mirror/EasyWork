@@ -19,18 +19,18 @@ public class LogInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
-        Log.e("LogInterceptor","request:"+request);
-        Log.e("LogInterceptor","header:"+request.headers());
+        Log.e("LogInterceptor", "request:" + request);
+        Log.e("LogInterceptor", "header:" + request.headers());
         long startTime = System.currentTimeMillis();
         Response response = chain.proceed(request);
-        long endTime=System.currentTimeMillis();
-        Log.e("LogInterceptor","count:"+(endTime-startTime));
-//        MediaType mediaType = response.body().contentType();
-//        String content=response.body().string();
-        Log.e("LogInterceptor","content:"+response);
-        /*return response.newBuilder()
-                .body(ResponseBody.create(mediaType, content))
-                .build();*/
+        long endTime = System.currentTimeMillis();
+        Log.e("LogInterceptor", "count:" + (endTime - startTime));
+
+        Response.Builder builder = response.newBuilder();
+        Response clone = builder.build();
+        MediaType mediaType = clone.body().contentType();
+        String content = clone.body().string();
+        Log.e("LogInterceptor", "content:" + content);
         return response;
     }
 }
