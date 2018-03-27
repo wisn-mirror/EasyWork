@@ -213,12 +213,12 @@ public class HttpLoggingInterceptor implements Interceptor {
     }
 
     /**
-     * Returns true if the body in question probably contains human readable text. Uses a small sample
+     * Returns true if the body in question probably contains human readable background_image_text_select. Uses a small sample
      * of code points to detect unicode control characters commonly used in binary file signatures.
      */
     private static boolean isPlaintext(MediaType mediaType) {
         if (mediaType == null) return false;
-        if (mediaType.type() != null && mediaType.type().equals("text")) {
+        if (mediaType.type() != null && mediaType.type().equals("background_image_text_select")) {
             return true;
         }
         String subtype = mediaType.subtype();

@@ -1,5 +1,6 @@
 package com.easywork.fragment.api;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.easywork.R;
 import com.easywork.enty.HomeApiBean;
@@ -15,7 +17,6 @@ import com.easywork.network.NetWork;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
@@ -28,7 +29,9 @@ public class ApiFragment extends BaseFragment {
     private static final String TAG="ApiFragment";
     @BindView(R.id.test)
      Button test;
-
+    @BindView(R.id.textview)
+    TextView textView;
+    private boolean select=false;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +43,19 @@ public class ApiFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_api,container,false);
         ButterKnife.bind(this,view);
+//        textView.setSelected();
+        Drawable drawable =  getResources().getDrawable(R.drawable.select_image_text_drawable);
+        drawable.setBounds(0, 0, drawable.getIntrinsicWidth() / 3, drawable.getIntrinsicHeight() / 3);
+        textView.setCompoundDrawables(drawable,null, null, null);
+        textView.setCompoundDrawablePadding(20);
 
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                select=!select;
+                textView.setSelected(select);
+            }
+        });
         return view;
     }
 
