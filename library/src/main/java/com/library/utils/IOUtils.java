@@ -1,4 +1,4 @@
-package com.easywork.utils;
+package com.library.utils;
 
 import android.os.Build;
 import android.os.StatFs;

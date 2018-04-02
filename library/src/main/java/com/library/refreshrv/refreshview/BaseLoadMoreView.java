@@ -44,6 +44,7 @@ public abstract class BaseLoadMoreView  extends LinearLayout {
      * 状态设置
      */
     public abstract void setState(int state);
+
     /**
      * 获取状态
      */

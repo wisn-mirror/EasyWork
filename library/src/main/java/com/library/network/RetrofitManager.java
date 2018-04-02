@@ -3,12 +3,13 @@ package com.library.network;
 import android.text.TextUtils;
 
 import com.library.config.LibConfig;
+import com.library.network.Interceptor.HttpLoggingInterceptor;
 
 import java.io.File;
+import java.util.logging.Level;
 
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -21,21 +22,20 @@ public class RetrofitManager {
     private static Retrofit mRetrofit;
     private static Retrofit mNoCacheRetrofit;
 
+    public static void initHttpClient() {
+
+    }
+
     private static Retrofit getRetrofit() {
 
         if (mRetrofit == null) {
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
             //如果不是在正式包，添加拦截 打印响应json
             if (LibConfig.isDebug) {
-                HttpLoggingInterceptor logging = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
-                    @Override
-                    public void log(String message) {
-//                        LogUtils.info("RetrofitManager", "收到响应: " + message);
-                    }
-                });
-
-                logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-                builder.addInterceptor(logging);
+                HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor(LibConfig.HttpLogTAG);
+                httpLoggingInterceptor.setPrintLevel(HttpLoggingInterceptor.Level.BODY);
+                httpLoggingInterceptor.setColorLevel(Level.INFO);
+                builder.addNetworkInterceptor(httpLoggingInterceptor);
             }
 
             if (!TextUtils.isEmpty(LibConfig.baseUrl) && LibConfig.CONTEXT != null) {
@@ -62,15 +62,10 @@ public class RetrofitManager {
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
             //如果不是在正式包，添加拦截 打印响应json
             if (LibConfig.isDebug) {
-                HttpLoggingInterceptor logging = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
-                    @Override
-                    public void log(String message) {
-//                        LogUtils.info("RetrofitManager", "收到响应: " + message);
-                    }
-                });
-
-                logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-                builder.addInterceptor(logging);
+                HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor(LibConfig.HttpLogTAG);
+                httpLoggingInterceptor.setPrintLevel(HttpLoggingInterceptor.Level.BODY);
+                httpLoggingInterceptor.setColorLevel(Level.INFO);
+                builder.addNetworkInterceptor(httpLoggingInterceptor);
             }
 
             OkHttpClient okHttpClient = builder.build();

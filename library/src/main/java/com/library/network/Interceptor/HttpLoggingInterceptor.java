@@ -1,8 +1,7 @@
-package com.easywork.interceptor;
+package com.library.network.Interceptor;
 
-
-import com.easywork.utils.IOUtils;
-import com.easywork.utils.LogUtils;
+import com.library.utils.IOUtils;
+import com.library.utils.LogUtils;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -25,7 +24,7 @@ import okio.GzipSink;
 import okio.Okio;
 
 /**
- * Created by wisn on 2017/8/22.
+ * Created by Wisn on 2018/4/2 下午6:43.
  */
 
 public class HttpLoggingInterceptor implements Interceptor {

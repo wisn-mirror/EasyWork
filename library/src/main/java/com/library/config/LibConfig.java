@@ -9,6 +9,8 @@ import android.content.Context;
 
 public class LibConfig {
     public static boolean isDebug=true;
+    public static String HttpLogTAG="";
+
     public static String baseUrl="";
     //网络请求的域名
     public static String URL_DOMAIN;
@@ -22,4 +24,6 @@ public class LibConfig {
     public static long MAX_MEMORY_SIZE=10 * 1024 * 1024;
     //设置网络请求json通用解析类
     public static Class MClASS;
+
+
 }

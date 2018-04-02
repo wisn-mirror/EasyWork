@@ -1,8 +1,8 @@
 package com.easywork.fragment;
 
-import android.support.v4.app.Fragment;
 
-import com.easywork.fragment.api.ApiFragment;
+
+import android.support.v4.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,10 +53,10 @@ public class FragmentFactory {
         Fragment  fragment=null;
         switch (key) {
             case "Api":
-                fragment=new ApiFragment();
+//                fragment=new ApiFragment();
                 break;
         }
-        hashMap.put(key, new ApiFragment());
+//        hashMap.put(key, new ApiFragment());
         return fragment;
     }
 

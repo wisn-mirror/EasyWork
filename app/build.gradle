@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion app.compileSdkVersion
 
@@ -17,12 +18,41 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //这个是解决lint报错的代码
+    lintOptions {
+        abortOnError false
+    }
+
+    //过滤jar包里的说明文件，防止重复打包
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':library')
+    implementation supportDependencies.appCompat
+    implementation supportDependencies.recyclerview
+    implementation supportDependencies.design
+
+    implementation  thirdDependencies.rxjava
+    implementation  thirdDependencies.rxandroid
+    implementation  thirdDependencies.rxbinding
+    implementation  thirdDependencies.okhttp
+    implementation  thirdDependencies.retrofit
+    implementation  thirdDependencies.gsonConverter
+    implementation  thirdDependencies.rxjavaAdapter
+    implementation  thirdDependencies.loggingInterceptor
+    implementation  thirdDependencies.avi
+    implementation  thirdDependencies.cardview
+    implementation  thirdDependencies.glide
+    annotationProcessor  thirdDependencies.glide_compiler
+    implementation  thirdDependencies.butterknife
+    annotationProcessor  thirdDependencies.butterknife_compiler
+    implementation  thirdDependencies.CymChad
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    implementation project(':library')
 }

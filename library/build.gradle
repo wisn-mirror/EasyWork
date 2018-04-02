@@ -34,6 +34,7 @@ dependencies {
     implementation  thirdDependencies.rxjava
     implementation  thirdDependencies.rxandroid
     implementation  thirdDependencies.rxbinding
+    implementation  thirdDependencies.okhttp
     implementation  thirdDependencies.retrofit
     implementation  thirdDependencies.gsonConverter
     implementation  thirdDependencies.rxjavaAdapter
@@ -47,6 +48,6 @@ dependencies {
     implementation  thirdDependencies.CymChad
 
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+//    androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
