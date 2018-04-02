@@ -1,12 +1,15 @@
 package com.easywork.fragment.api;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -23,6 +26,7 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by mac on 2018/3/25.
+ * https://api.douban.com/v2/movie/top250?start=0&count=10
  */
 
 public class ApiFragment extends BaseFragment {
@@ -32,6 +36,7 @@ public class ApiFragment extends BaseFragment {
     @BindView(R.id.textview)
     TextView textView;
     private boolean select=false;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +48,16 @@ public class ApiFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_api,container,false);
         ButterKnife.bind(this,view);
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setData(Uri.parse("wisn://lyf-app.com/recipe"));
+                startActivity(intent);
+//                WebView.loadUrl("artist://first/enter");
+
+            }
+        });
 //        textView.setSelected();
         Drawable drawable =  getResources().getDrawable(R.drawable.select_image_text_drawable);
         drawable.setBounds(0, 0, drawable.getIntrinsicWidth() / 3, drawable.getIntrinsicHeight() / 3);
