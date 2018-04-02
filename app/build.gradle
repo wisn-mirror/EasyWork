@@ -33,25 +33,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':library')
-    implementation supportDependencies.appCompat
-    implementation supportDependencies.recyclerview
-    implementation supportDependencies.design
 
-    implementation  thirdDependencies.rxjava
-    implementation  thirdDependencies.rxandroid
-    implementation  thirdDependencies.rxbinding
-    implementation  thirdDependencies.okhttp
-    implementation  thirdDependencies.retrofit
-    implementation  thirdDependencies.gsonConverter
-    implementation  thirdDependencies.rxjavaAdapter
-    implementation  thirdDependencies.loggingInterceptor
-    implementation  thirdDependencies.avi
-    implementation  thirdDependencies.cardview
-    implementation  thirdDependencies.glide
-    annotationProcessor  thirdDependencies.glide_compiler
-    implementation  thirdDependencies.butterknife
-    annotationProcessor  thirdDependencies.butterknife_compiler
-    implementation  thirdDependencies.CymChad
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'

@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'com.jakewharton.butterknife'
 android {
     compileSdkVersion app.compileSdkVersion
 
@@ -27,25 +27,25 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation supportDependencies.appCompat
-    implementation supportDependencies.recyclerview
-    implementation supportDependencies.design
+    compile supportDependencies.appCompat
+    compile supportDependencies.recyclerview
+    compile supportDependencies.design
 
-    implementation  thirdDependencies.rxjava
-    implementation  thirdDependencies.rxandroid
-    implementation  thirdDependencies.rxbinding
-    implementation  thirdDependencies.okhttp
-    implementation  thirdDependencies.retrofit
-    implementation  thirdDependencies.gsonConverter
-    implementation  thirdDependencies.rxjavaAdapter
-    implementation  thirdDependencies.loggingInterceptor
-    implementation  thirdDependencies.avi
-    implementation  thirdDependencies.cardview
-    implementation  thirdDependencies.glide
+    compile  thirdDependencies.rxjava
+    compile  thirdDependencies.rxandroid
+    compile  thirdDependencies.rxbinding
+    compile  thirdDependencies.okhttp
+    compile  thirdDependencies.retrofit
+    compile  thirdDependencies.gsonConverter
+    compile  thirdDependencies.rxjavaAdapter
+    compile  thirdDependencies.loggingInterceptor
+    compile  thirdDependencies.avi
+    compile  thirdDependencies.cardview
+    compile  thirdDependencies.glide
     annotationProcessor  thirdDependencies.glide_compiler
-    implementation  thirdDependencies.butterknife
+    compile  thirdDependencies.butterknife
     annotationProcessor  thirdDependencies.butterknife_compiler
-    implementation  thirdDependencies.CymChad
+    compile  thirdDependencies.CymChad
 
     testImplementation 'junit:junit:4.12'
 //    androidTestImplementation 'com.android.support.test:runner:1.0.1'
