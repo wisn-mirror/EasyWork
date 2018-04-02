@@ -5,4 +5,5 @@ package com.library.mvp;
  */
 
 public interface BaseView {
+    void onError(String errorMsg);
 }
