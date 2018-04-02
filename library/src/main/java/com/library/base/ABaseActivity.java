@@ -14,7 +14,7 @@ import com.library.utils.ObjectGetByClassUtils;
  * Created by Wisn on 2018/4/2 下午1:37.
  */
 
-public abstract class BaseActivity<T extends BaseModel, E extends BasePresenter> extends AppCompatActivity {
+public abstract class ABaseActivity<T extends BaseModel, E extends BasePresenter> extends AppCompatActivity {
     public T mModel;
     public E mPresenter;
     private boolean isFrist = true;
