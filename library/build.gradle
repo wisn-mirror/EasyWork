@@ -44,6 +44,7 @@ dependencies {
     annotationProcessor  thirdDependencies.glide_compiler
     implementation  thirdDependencies.butterknife
     annotationProcessor  thirdDependencies.butterknife_compiler
+    implementation  thirdDependencies.CymChad
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

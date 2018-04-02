@@ -5,6 +5,7 @@ buildscript {
     repositories {
         google()
         jcenter()
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
@@ -19,6 +20,8 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
+
     }
 }
 
@@ -49,6 +52,7 @@ ext {
             glide_compiler      : "com.github.bumptech.glide:compiler:4.1.1",
             butterknife         : "com.jakewharton:butterknife:8.8.1",
             butterknife_compiler: "com.jakewharton:butterknife-compiler:8.8.1",
+            CymChad             : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.36",
     ]
 
     app=[
