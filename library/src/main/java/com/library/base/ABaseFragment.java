@@ -12,6 +12,9 @@ import com.library.mvp.BaseModel;
 import com.library.mvp.BasePresenter;
 import com.library.utils.ObjectGetByClassUtils;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 /**
  * Created by Wisn on 2018/4/2 下午3:03.
  */
@@ -23,6 +26,7 @@ public abstract class ABaseFragment<T extends BaseModel, E extends BasePresenter
     public E mPresenter;
     private FragmentUserVisibleController userVisibleController;
     public View mainView;
+    private Unbinder bind;
 
     public ABaseFragment() {
         userVisibleController=new FragmentUserVisibleController(this,this);
@@ -38,6 +42,7 @@ public abstract class ABaseFragment<T extends BaseModel, E extends BasePresenter
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mainView=inflater.inflate(getLayoutId(),container,false);
+        bind = ButterKnife.bind(mainView);
         mModel = ObjectGetByClassUtils.getClass(this, 0);
         mPresenter = ObjectGetByClassUtils.getClass(this, 1);
         if (mModel != null && mPresenter != null) {
@@ -51,7 +56,7 @@ public abstract class ABaseFragment<T extends BaseModel, E extends BasePresenter
         super.onViewCreated(view, savedInstanceState);
         isInit = true;
         userVisibleController.activityCreated();
-        init();
+        init(mainView);
     }
 
     @Override
@@ -59,7 +64,7 @@ public abstract class ABaseFragment<T extends BaseModel, E extends BasePresenter
         super.onResume();
         userVisibleController.resume();
         if (getUserVisibleHint()) {
-            if (isInit && isCreated) {
+            if (isInit && !isCreated) {
                 isInit = false;// 加载数据完成
                 requestData();
             }
@@ -76,11 +81,11 @@ public abstract class ABaseFragment<T extends BaseModel, E extends BasePresenter
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if(mPresenter!=null){
-            mPresenter.onDestroy();
-        }
+        if(mPresenter!=null) mPresenter.onDestroy();
+        if(bind!=null) bind.unbind();
     }
-    public abstract void init();
+
+    public abstract void init(View view);
 
     public abstract int getLayoutId();
 

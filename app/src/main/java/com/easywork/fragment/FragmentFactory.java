@@ -10,6 +10,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import top250Movies.Model1Fragment;
+
 /**
  * Created by mac on 2018/3/25.
  */
@@ -53,10 +55,10 @@ public class FragmentFactory {
         Fragment  fragment=null;
         switch (key) {
             case "Api":
-//                fragment=new ApiFragment();
+                fragment=new Model1Fragment();
                 break;
         }
-//        hashMap.put(key, new ApiFragment());
+        hashMap.put(key, fragment);
         return fragment;
     }
 

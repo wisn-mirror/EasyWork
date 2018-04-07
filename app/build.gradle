@@ -28,6 +28,26 @@ android {
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE.txt'
     }
+
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java', 'src/commom/java/']
+            if (isBuildmodel1.toBoolean()) {
+                java.srcDirs += ['src/model1/java/']
+            }
+            if (isBuildmodel2.toBoolean()) {
+                java.srcDirs += ['src/model2/java/']
+            }
+
+            res.srcDirs = ['src/main/res', 'src/commom/res/']
+            if (isBuildmodel1.toBoolean()) {
+                res.srcDirs += ['src/model1/res/']
+            }
+            if (isBuildmodel2.toBoolean()) {
+                res.srcDirs += ['src/model2/res/']
+            }
+        }
+    }
 }
 
 dependencies {

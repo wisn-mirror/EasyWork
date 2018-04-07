@@ -13,7 +13,7 @@ public class LibConfig {
 
     public static String baseUrl="";
     //网络请求的域名
-    public static String URL_DOMAIN;
+    public static String URL_DOMAIN="https://api.douban.com/";
     //网络缓存地址
     public static String URL_CACHE;
     //设置Context
