@@ -10,7 +10,7 @@ public class LogUtils {
 
     private static boolean isLogEnable = true;
 
-    private static String tag = "WSONet";
+    private static String tag = "AAAA";
 
     public static void debug(boolean isEnable) {
         debug(tag, isEnable);

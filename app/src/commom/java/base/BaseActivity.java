@@ -1,5 +1,8 @@
 package base;
 
+import android.app.ActivityManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
@@ -7,6 +10,9 @@ import android.widget.Toast;
 import com.library.base.ABaseActivity;
 import com.library.mvp.BaseModel;
 import com.library.mvp.BasePresenter;
+import com.library.utils.LogUtils;
+
+import java.util.List;
 
 /**
  * Created by Wisn on 2018/4/6 下午7:41.
@@ -23,6 +29,19 @@ public abstract class BaseActivity<T extends BaseModel, E extends BasePresenter>
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+    }
+
+    public  boolean isForeground(Context context) {
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningTaskInfo> tasks = am.getRunningTasks(20);
+        if (!tasks.isEmpty()) {
+            ComponentName topActivity = tasks.get(0).topActivity;
+            if (topActivity.getPackageName().equals(context.getPackageName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

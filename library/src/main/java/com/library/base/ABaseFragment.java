@@ -29,19 +29,19 @@ public abstract class ABaseFragment<T extends BaseModel, E extends BasePresenter
     private Unbinder bind;
 
     public ABaseFragment() {
-        userVisibleController=new FragmentUserVisibleController(this,this);
+        userVisibleController = new FragmentUserVisibleController(this, this);
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        isCreated=true;
+        isCreated = true;
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mainView=inflater.inflate(getLayoutId(),container,false);
+        mainView = inflater.inflate(getLayoutId(), container, false);
         bind = ButterKnife.bind(mainView);
         mModel = ObjectGetByClassUtils.getClass(this, 0);
         mPresenter = ObjectGetByClassUtils.getClass(this, 1);
@@ -64,7 +64,7 @@ public abstract class ABaseFragment<T extends BaseModel, E extends BasePresenter
         super.onResume();
         userVisibleController.resume();
         if (getUserVisibleHint()) {
-            if (isInit && !isCreated) {
+            if (isInit && isCreated) {
                 isInit = false;// 加载数据完成
                 requestData();
             }
@@ -81,8 +81,21 @@ public abstract class ABaseFragment<T extends BaseModel, E extends BasePresenter
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if(mPresenter!=null) mPresenter.onDestroy();
-        if(bind!=null) bind.unbind();
+        if (mPresenter != null) mPresenter.onDestroy();
+        if (bind != null) bind.unbind();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        userVisibleController.setUserVisibleHint(isVisibleToUser);
+        // 每次切换fragment时调用的方法
+        if (isVisibleToUser) {
+            if (isInit && isCreated) {
+                isInit = false;//加载数据完成
+                requestData();
+            }
+        }
     }
 
     public abstract void init(View view);

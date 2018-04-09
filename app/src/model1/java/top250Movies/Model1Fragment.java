@@ -4,8 +4,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.easywork.BitmapUtils;
 import com.easywork.R;
 import com.library.refreshrv.PullToRefreshRecyclerView;
+import com.library.utils.LogUtils;
 
 import base.BaseFragment;
 import butterknife.BindView;
@@ -29,6 +31,7 @@ public class Model1Fragment extends BaseFragment<MoviesModel, MoviesPresenter> i
         pullToRefreshRecyclerView=view.findViewById(R.id.pulltorefreshRecycleView);
         pullToRefreshRecyclerView.setLayoutManager(layoutManager);
         pullToRefreshRecyclerView.setAdapter(moviesAdapter);
+
     }
 
     @Override
@@ -38,6 +41,7 @@ public class Model1Fragment extends BaseFragment<MoviesModel, MoviesPresenter> i
 
     @Override
     public void requestData() {
+        LogUtils.d("requestData");
         ((MoviesPresenter)mPresenter).getTopMovies(0,200);
     }
 
