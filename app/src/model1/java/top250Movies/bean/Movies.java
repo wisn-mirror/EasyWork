@@ -2,6 +2,7 @@ package top250Movies.bean;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,6 +25,15 @@ public class Movies {
     public String title;
     public List<SubjectsBean> subjects;
 
+    public static List<SubjectsBean> getData(){
+        List<Movies.SubjectsBean> data=new ArrayList<>();
+        for(int i=0;i<10000;i++){
+            SubjectsBean subjectsBean = new SubjectsBean();
+            subjectsBean.rating=new SubjectsBean.RatingBean();
+            data.add(subjectsBean);
+        }
+        return data;
+    }
 
     public static class SubjectsBean implements MultiItemEntity {
         /**

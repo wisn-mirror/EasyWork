@@ -8,12 +8,18 @@ import android.os.Environment;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.easywork.adapter.FragmentAdapter;
+import com.easywork.dialog.CustomViewAnyPositionDialog;
+import com.easywork.dialog.CustomViewDialog;
+import com.easywork.dialog.NormalFragmentDialog;
 import com.library.utils.LogUtils;
+
+import java.security.GeneralSecurityException;
 
 import base.BaseActivity;
 import butterknife.BindView;
@@ -49,8 +55,11 @@ public class MainActivity extends BaseActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showToast("生成");
-                new Thread(new Runnable() {
+//                showToast("生成");
+//                NormalFragmentDialog.getInstance().show(getFragmentManager(),"aaa");
+//                CustomViewDialog.getInstance(true).show(getFragmentManager(),"bbb");
+                CustomViewAnyPositionDialog.getInstance().show(getFragmentManager(),"ccc");
+                /*new Thread(new Runnable() {
                     @Override
                     public void run() {
                         Bitmap bitmap = BitmapUtils.drawableBitMap(MainActivity.this,
@@ -59,7 +68,7 @@ public class MainActivity extends BaseActivity {
                         String url = BitmapUtils.saveBitmapFile(MainActivity.this, bitmap);
                         LogUtils.d( "成功保存图片" + url);
                     }
-                }).start();
+                }).start();*/
             }
         });
 
