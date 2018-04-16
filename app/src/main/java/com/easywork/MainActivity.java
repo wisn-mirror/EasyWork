@@ -8,14 +8,19 @@ import android.os.Environment;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.easywork.adapter.FragmentAdapter;
 import com.easywork.dialog.CustomViewAnyPositionDialog;
 import com.easywork.dialog.CustomViewDialog;
+import com.easywork.dialog.DialogAdapter;
 import com.easywork.dialog.NormalFragmentDialog;
 import com.library.utils.LogUtils;
 
@@ -24,6 +29,7 @@ import java.security.GeneralSecurityException;
 import base.BaseActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import top250Movies.bean.Movies;
 
 public class MainActivity extends BaseActivity {
 
@@ -52,13 +58,24 @@ public class MainActivity extends BaseActivity {
             tabLayout.addTab(tabLayout.newTab());
         }
         tabLayout.setupWithViewPager(viewPager,true);
+        DialogAdapter   moviesAdapter = new DialogAdapter(Movies.getData());
+      RecyclerView recyclerView =findViewById(R.id.recyclerView);
+        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(moviesAdapter);
+        moviesAdapter.setOnItemClickListener( new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Toast.makeText(MainActivity.this, "onItemClick" + position, Toast.LENGTH_SHORT).show();
+            }
+        } );
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                showToast("生成");
 //                NormalFragmentDialog.getInstance().show(getFragmentManager(),"aaa");
 //                CustomViewDialog.getInstance(true).show(getFragmentManager(),"bbb");
-                CustomViewAnyPositionDialog.getInstance().show(getFragmentManager(),"ccc");
+                CustomViewAnyPositionDialog.getInstance().show(getSupportFragmentManager(),"ccc");
                 /*new Thread(new Runnable() {
                     @Override
                     public void run() {

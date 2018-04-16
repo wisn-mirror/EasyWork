@@ -1,10 +1,10 @@
 package com.easywork.dialog;
 
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -15,14 +15,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.easywork.R;
 import com.library.utils.ToastUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import top250Movies.MoviesAdapter;
 import top250Movies.bean.Movies;
 
 /**
@@ -33,7 +35,9 @@ public class CustomViewAnyPositionDialog extends DialogFragment implements View.
     private static final String NO_TITLE = "no_title";
     private boolean mNo_Title;
     private RecyclerView recyclerView;
-    MoviesAdapter moviesAdapter;
+    DialogAdapter moviesAdapter;
+    private List<Movies.SubjectsBean> data;
+    int select=0;
     public static CustomViewAnyPositionDialog getInstance(){
         CustomViewAnyPositionDialog customViewDialog=new CustomViewAnyPositionDialog();
         return customViewDialog;
@@ -60,19 +64,86 @@ public class CustomViewAnyPositionDialog extends DialogFragment implements View.
         return inflater.inflate(R.layout.dialog_custome, container, false);
 //        return super.onCreateView(inflater, container, savedInstanceState);
     }
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         view.findViewById(R.id.bt_ok).setOnClickListener(this);
         view.findViewById(R.id.bt_cancle).setOnClickListener(this);
-        moviesAdapter = new MoviesAdapter(Movies.getData());
+        data = Movies.getData();
+//        moviesAdapter = new DialogAdapter();
         recyclerView = view.findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(moviesAdapter);
+        RecyclerView.Adapter mAdapter = new RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+            @Override
+            public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                    ShangjiaHodle
+                            myviewHodle =
+                            new ShangjiaHodle(View.inflate(getActivity(), R.layout.topmovies_badmovies, null));
+
+                    return myviewHodle;
+            }
+
+            @Override
+            public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+                if (holder instanceof ShangjiaHodle) {
+                    ShangjiaHodle holder1 = (ShangjiaHodle) holder;
+                    holder1.ll_root_shangjia.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            notifyItemChanged(select);
+                            Toast.makeText(getActivity(), "textView", Toast.LENGTH_SHORT).show();
+                            select=position;
+                            notifyItemChanged(select);
+                        }
+                    });
+                    if(position==select){
+                        holder1.img_seleect_all.setImageResource(R.drawable.selected_true);
+
+                    }else{
+                        holder1.img_seleect_all.setImageResource(R.drawable.selected_false);
+
+                    }
+//                    holder1.textview.setText(data.get(position));
+                }
+            }
+
+
+            @Override
+            public int getItemCount() {
+                return data.size();
+            }
+
+            @Override
+            public int getItemViewType(int position) {
+                return 0;
+            }
+
+        };
+        recyclerView.setAdapter(mAdapter);
+       /* moviesAdapter.setOnItemClickListener( new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Toast.makeText(getActivity(), "onItemClick" + position, Toast.LENGTH_SHORT).show();
+            }
+        } );*/
     }
 
+    class ShangjiaHodle extends RecyclerView.ViewHolder {
+        public TextView tv_shangjia_name;
+        public TextView shangpin_count;
+        public LinearLayout ll_root_shangjia;
+        public ImageView img_seleect_all;
+
+        public ShangjiaHodle(View itemView) {
+            super(itemView);
+            tv_shangjia_name = itemView.findViewById(R.id.tv_shangjia_name);
+            shangpin_count = itemView.findViewById(R.id.shangpin_count);
+            ll_root_shangjia = itemView.findViewById(R.id.ll_root_shangjia);
+            img_seleect_all = itemView.findViewById(R.id.img_seleect_all);
+        }
+    }
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -80,7 +151,7 @@ public class CustomViewAnyPositionDialog extends DialogFragment implements View.
         WindowManager.LayoutParams attributes = window.getAttributes();
         attributes.gravity= Gravity.CENTER|Gravity.CENTER;
         window.setAttributes(attributes);
-        getDialog().setCancelable(false);
+        getDialog().setCancelable(true);
         getDialog().setCanceledOnTouchOutside(false);
         getDialog().setOnKeyListener(new DialogInterface.OnKeyListener() {
             @Override

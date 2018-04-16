@@ -1,18 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_root_shangjia"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
-
-    <CheckBox
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/img_seleect_all"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="7dp"
+        android:src="@drawable/selected_true"
+        android:button="@null" />
+    <LinearLayout
+        android:id="@+id/ll_root_shangjia_text"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="CheckBox" />
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="bad" />
+        <TextView
+            android:id="@+id/tv_shangjia_name"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="left|center"
+            android:textSize="12sp"
+            android:text="商家Name" />
+        <TextView
+            android:id="@+id/shangpin_count"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:gravity="left|center"
+            android:textSize="10sp"
+            android:text="共几件" />
+    </LinearLayout>
+
 </LinearLayout>
