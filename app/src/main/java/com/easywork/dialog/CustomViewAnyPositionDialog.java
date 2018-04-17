@@ -60,7 +60,7 @@ public class CustomViewAnyPositionDialog extends DialogFragment implements View.
         //getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         // dialog的背景色
         //getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.RED));
-        getDialog().getWindow().setDimAmount(0.8f);//背景黑暗度
+        getDialog().getWindow().setDimAmount(0.4f);//背景黑暗度
         return inflater.inflate(R.layout.dialog_custome, container, false);
 //        return super.onCreateView(inflater, container, savedInstanceState);
     }
@@ -80,7 +80,7 @@ public class CustomViewAnyPositionDialog extends DialogFragment implements View.
             public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                     ShangjiaHodle
                             myviewHodle =
-                            new ShangjiaHodle(View.inflate(getActivity(), R.layout.topmovies_badmovies, null));
+                            new ShangjiaHodle(LayoutInflater.from(getContext()).inflate(R.layout.topmovies_badmovies,parent,false));
 
                     return myviewHodle;
             }
