@@ -19,9 +19,6 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 import okhttp3.internal.http.HttpHeaders;
 import okio.Buffer;
-import okio.BufferedSink;
-import okio.GzipSink;
-import okio.Okio;
 
 /**
  * Created by Wisn on 2018/4/2 下午6:43.
@@ -62,13 +59,6 @@ public class HttpLoggingInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
-        if (request.body() != null && request.header("Content-Encoding") != null && "gzip".equalsIgnoreCase(request.header("Content-Encoding"))) {
-            request = request.newBuilder()
-                    .header("Content-Encoding", "gzip")
-                    .method(request.method(), gzip(request.body()))
-                    .build();
-        }
-
         if (printLevel == Level.NONE) {
             return chain.proceed(request);
         }
@@ -85,32 +75,10 @@ public class HttpLoggingInterceptor implements Interceptor {
             log("<-- HTTP FAILED: " + e);
             throw e;
         }
-
         long tookMs = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNs);
 
         //响应日志拦截
         return logForResponse(response, tookMs);
-    }
-
-    private RequestBody gzip(final RequestBody body) {
-        return new RequestBody() {
-            @Override
-            public MediaType contentType() {
-                return body.contentType();
-            }
-
-            @Override
-            public long contentLength() {
-                return -1; // 无法提前知道压缩后的数据大小
-            }
-
-            @Override
-            public void writeTo(BufferedSink sink) throws IOException {
-                BufferedSink gzipSink = Okio.buffer(new GzipSink(sink));
-                body.writeTo(gzipSink);
-                gzipSink.close();
-            }
-        };
     }
 
     private void logForRequest(Request request, Connection connection) throws IOException {
@@ -154,7 +122,7 @@ public class HttpLoggingInterceptor implements Interceptor {
                 }
             }
         } catch (Exception e) {
-            LogUtils.printStackTrace(e);
+            e.printStackTrace();
         } finally {
             log("--> END " + request.method());
         }
@@ -179,15 +147,8 @@ public class HttpLoggingInterceptor implements Interceptor {
                     if (responseBody == null) return response;
 
                     if (isPlaintext(responseBody.contentType())) {
-                       /* decompressedCounter = new CountingOutputStream(decompressedOutput);
-                        if (gzipEncoding) {
-                            output = ;
-                        }*//*
-                        responseBody.byteStream()
-                        GunzippingOutputStream.create();*/
                         byte[] bytes = IOUtils.toByteArray(responseBody.byteStream());
                         MediaType contentType = responseBody.contentType();
-                        log("\tcontentType:" + contentType);
                         String body = new String(bytes, getCharset(contentType));
                         log("\tbody:" + body);
                         responseBody = ResponseBody.create(responseBody.contentType(), bytes);
@@ -198,7 +159,7 @@ public class HttpLoggingInterceptor implements Interceptor {
                 }
             }
         } catch (Exception e) {
-            LogUtils.printStackTrace(e);
+            e.printStackTrace();
         } finally {
             log("<-- END HTTP");
         }
@@ -212,12 +173,12 @@ public class HttpLoggingInterceptor implements Interceptor {
     }
 
     /**
-     * Returns true if the body in question probably contains human readable background_image_text_select. Uses a small sample
+     * Returns true if the body in question probably contains human readable text. Uses a small sample
      * of code points to detect unicode control characters commonly used in binary file signatures.
      */
     private static boolean isPlaintext(MediaType mediaType) {
         if (mediaType == null) return false;
-        if (mediaType.type() != null && mediaType.type().equals("background_image_text_select")) {
+        if (mediaType.type() != null && mediaType.type().equals("text")) {
             return true;
         }
         String subtype = mediaType.subtype();
@@ -239,7 +200,7 @@ public class HttpLoggingInterceptor implements Interceptor {
             Charset charset = getCharset(body.contentType());
             log("\tbody:" + buffer.readString(charset));
         } catch (Exception e) {
-            LogUtils.printStackTrace(e);
+            e.printStackTrace();
         }
     }
 }

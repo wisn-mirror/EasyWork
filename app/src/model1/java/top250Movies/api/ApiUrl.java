@@ -5,5 +5,5 @@ package top250Movies.api;
  */
 
 public class ApiUrl {
-    public static final String getMoviesTop="v2/movie/top250/";
+    public static final String getMoviesTop="v2/movie/top250";
 }

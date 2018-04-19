@@ -31,7 +31,7 @@ public class Model1Fragment extends BaseFragment<MoviesModel, MoviesPresenter> i
         pullToRefreshRecyclerView=view.findViewById(R.id.pulltorefreshRecycleView);
         pullToRefreshRecyclerView.setLayoutManager(layoutManager);
         pullToRefreshRecyclerView.setAdapter(moviesAdapter);
-
+        pullToRefreshRecyclerView.setPullRefreshEnabled(true);
     }
 
     @Override

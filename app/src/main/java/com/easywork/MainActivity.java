@@ -75,7 +75,7 @@ public class MainActivity extends BaseActivity {
 //                showToast("生成");
 //                NormalFragmentDialog.getInstance().show(getFragmentManager(),"aaa");
 //                CustomViewDialog.getInstance(true).show(getFragmentManager(),"bbb");
-                CustomViewAnyPositionDialog.getInstance().show(getSupportFragmentManager(),"ccc");
+//                CustomViewAnyPositionDialog.getInstance().show(getSupportFragmentManager(),"ccc");
                 /*new Thread(new Runnable() {
                     @Override
                     public void run() {

@@ -35,7 +35,7 @@ public class RetrofitManager {
                 HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor(LibConfig.HttpLogTAG);
                 httpLoggingInterceptor.setPrintLevel(HttpLoggingInterceptor.Level.BODY);
                 httpLoggingInterceptor.setColorLevel(Level.INFO);
-                builder.addNetworkInterceptor(httpLoggingInterceptor);
+                builder.addInterceptor(httpLoggingInterceptor);
             }
 
             if (!TextUtils.isEmpty(LibConfig.baseUrl) && LibConfig.CONTEXT != null) {
@@ -65,7 +65,7 @@ public class RetrofitManager {
                 HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor(LibConfig.HttpLogTAG);
                 httpLoggingInterceptor.setPrintLevel(HttpLoggingInterceptor.Level.BODY);
                 httpLoggingInterceptor.setColorLevel(Level.INFO);
-                builder.addNetworkInterceptor(httpLoggingInterceptor);
+                builder.addInterceptor(httpLoggingInterceptor);
             }
 
             OkHttpClient okHttpClient = builder.build();

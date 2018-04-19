@@ -46,6 +46,7 @@ dependencies {
     compile  thirdDependencies.butterknife
     annotationProcessor  thirdDependencies.butterknife_compiler
     compile  thirdDependencies.CymChad
+    compile  thirdDependencies.zxing
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

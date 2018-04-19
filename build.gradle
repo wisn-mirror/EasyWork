@@ -55,6 +55,7 @@ ext {
             butterknife         : "com.jakewharton:butterknife:8.8.1",
             butterknife_compiler: "com.jakewharton:butterknife-compiler:8.8.1",
             CymChad             : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.36",
+            zxing               : "com.google.zxing:core:3.3.2",
     ]
 
     app=[

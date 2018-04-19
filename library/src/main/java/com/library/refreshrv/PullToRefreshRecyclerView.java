@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.library.refreshrv.defaultview.DefaultArrowRefreshHeaderView;
 import com.library.refreshrv.defaultview.DefaultLoadMoreView;
 import com.library.refreshrv.refreshview.BaseLoadMoreView;
@@ -748,7 +749,7 @@ public class PullToRefreshRecyclerView extends RecyclerView {
             adapter.registerAdapterDataObserver(observer);
         }
 
-        private class HeaderAndFooterViewHolder extends ViewHolder {
+        private class HeaderAndFooterViewHolder extends BaseViewHolder {
             public HeaderAndFooterViewHolder(View itemView) {
                 super(itemView);
             }

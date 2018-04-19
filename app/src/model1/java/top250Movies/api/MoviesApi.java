@@ -13,5 +13,5 @@ import retrofit2.http.Url;
 public interface MoviesApi {
 
     @GET
-    Observable<Movies> getMovies(@Url String url , @Query("start")  int start, @Query("start") int count);
+    Observable<Movies> getMovies(@Url String url , @Query("start")  int start, @Query("count") int count);
 }
