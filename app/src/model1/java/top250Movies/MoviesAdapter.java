@@ -38,10 +38,10 @@ public class MoviesAdapter extends BaseMultiItemQuickAdapter<Movies.SubjectsBean
             case Movies.SubjectsBean.NotBadMovie:
                 break;
             case Movies.SubjectsBean.GoodMovie:
-                helper.setText(R.id.name,item.title);
+                helper.setText(R.id.name,item.title+item.images.medium);
                ImageView imageView= helper.getView(R.id.image);
 
-                Glide.with(mContext).load(item.images.medium).into(imageView).onLoadFailed(mContext.getResources().getDrawable(R.drawable.ic_launcher_round));
+//                Glide.with(mContext).load(item.images.medium).into(imageView).onLoadFailed(mContext.getResources().getDrawable(R.drawable.ic_launcher_round));
 
 //                Glide
 //                        .with(context)

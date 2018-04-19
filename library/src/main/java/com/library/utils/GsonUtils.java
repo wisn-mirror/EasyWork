@@ -50,7 +50,7 @@ public class GsonUtils {
         return gson.toJson(t);
     }
 
-    static class ParameterizedTypeImpl implements ParameterizedType {
+    public static class ParameterizedTypeImpl implements ParameterizedType {
         private final Class raw;
         private final Type[] args;
 

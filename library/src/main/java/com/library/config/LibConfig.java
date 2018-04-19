@@ -1,6 +1,5 @@
 package com.library.config;
 
-import android.app.Application;
 import android.content.Context;
 
 /**

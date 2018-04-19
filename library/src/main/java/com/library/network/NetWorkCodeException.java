@@ -41,6 +41,7 @@ public class NetWorkCodeException {
     public static final int SSL_ERROR = 1005;
 
     public static ResponseThrowable getResponseThrowable(Throwable e) {
+        e.printStackTrace();
         ResponseThrowable ex;
 
         if (e instanceof HttpException) {
@@ -99,10 +100,26 @@ public class NetWorkCodeException {
     public static class ResponseThrowable extends Exception {
         public int code;
         public String message;
+
+        @Override
+        public String toString() {
+            return "ResponseThrowable{" +
+                    "code=" + code +
+                    ", message='" + message + '\'' +
+                    '}';
+        }
     }
 
     public class ServerException extends RuntimeException {
         public int code;
         public String message;
+
+        @Override
+        public String toString() {
+            return "ServerException{" +
+                    "code=" + code +
+                    ", message='" + message + '\'' +
+                    '}';
+        }
     }
 }

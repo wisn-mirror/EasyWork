@@ -33,13 +33,13 @@ public class RetrofitManager {
                 HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor(LibConfig.HttpLogTAG);
                 httpLoggingInterceptor.setPrintLevel(HttpLoggingInterceptor.Level.BODY);
                 httpLoggingInterceptor.setColorLevel(Level.INFO);
-//                builder.addInterceptor(httpLoggingInterceptor);
+                builder.addInterceptor(httpLoggingInterceptor);
             }
 
             if (!TextUtils.isEmpty(LibConfig.baseUrl) && LibConfig.CONTEXT != null) {
                 //设置缓存
-//                File httpCacheDirectory = new File(LibConfig.URL_CACHE);
-//                builder.cache(new Cache(httpCacheDirectory, LibConfig.MAX_MEMORY_SIZE));
+                File httpCacheDirectory = new File(LibConfig.URL_CACHE);
+                builder.cache(new Cache(httpCacheDirectory, LibConfig.MAX_MEMORY_SIZE));
 //                builder.addInterceptor(RequestManager.getInterceptor());
             }
             OkHttpClient okHttpClient = builder.build();

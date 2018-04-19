@@ -44,7 +44,7 @@ public class Model1Fragment extends BaseFragment<MoviesModel, MoviesPresenter> i
     @Override
     public void requestData() {
         LogUtils.d("requestData");
-        ((MoviesPresenter) mPresenter).getTopMovies(10);
+        ((MoviesPresenter) mPresenter).getTopMovies(30);
     }
 
     @Override
@@ -74,8 +74,7 @@ public class Model1Fragment extends BaseFragment<MoviesModel, MoviesPresenter> i
     public void onRecyclerViewRefresh() {
         LogUtils.d("onRecyclerViewRefresh");
 
-        ((MoviesPresenter) mPresenter).getTopMovies(10);
-        pullToRefreshRecyclerView.refreshComplete();
+        ((MoviesPresenter) mPresenter).getTopMovies(30);
     }
 
     @Override
