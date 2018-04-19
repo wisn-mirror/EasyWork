@@ -17,6 +17,7 @@ import com.library.refreshrv.defaultview.DefaultArrowRefreshHeaderView;
 import com.library.refreshrv.defaultview.DefaultLoadMoreView;
 import com.library.refreshrv.refreshview.BaseLoadMoreView;
 import com.library.refreshrv.refreshview.BasePullToRefreshView;
+import com.library.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +47,7 @@ public class PullToRefreshRecyclerView extends RecyclerView {
     private static final int TYPE_LOADMORE_FOOTER = 20001;
     private static final int TYPE_EMPTY_VIEW = 20002;
     private static final int HEADER_INIT_INDEX = 20003;
+    private int differenceValve=2;
     //刷新加载更多监听
     private OnRefreshAndLoadMoreListener mLoadingListener;
     //设置头部底部View的适配器
@@ -202,6 +204,13 @@ public class PullToRefreshRecyclerView extends RecyclerView {
             loadMoreView.setState(BaseLoadMoreView.STATE_COMPLETE);
         }
     }
+    /**
+     * 设置加载更多的阀值
+     * @param valve
+     */
+    public void  setLoadMoreDifferenceValve(int valve){
+        differenceValve=valve+1;
+    }
 
     /**
      * 显示加载更新时间
@@ -270,7 +279,7 @@ public class PullToRefreshRecyclerView extends RecyclerView {
 
             //是否满屏
             if (PullToRefreshRecyclerViewUtils.isFullPage(this, lastVisibleItemPosition)) {
-                if (layoutManager.getChildCount() > 0 && lastVisibleItemPosition >= headerAndFooterAdapterItemCount - 2
+                if (layoutManager.getChildCount() > 0 && lastVisibleItemPosition >= headerAndFooterAdapterItemCount - differenceValve
                         && headerAndFooterAdapterItemCount >= layoutManager.getChildCount()
                         && status < BasePullToRefreshView.STATE_REFRESHING) {
                     isLoadingData = true;

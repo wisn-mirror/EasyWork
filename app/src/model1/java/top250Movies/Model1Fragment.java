@@ -19,7 +19,7 @@ import top250Movies.presenter.MoviesPresenter;
  * Created by Wisn on 2018/4/6 下午9:23.
  */
 
-public class Model1Fragment extends BaseFragment<MoviesModel, MoviesPresenter> implements GetTop.View{
+public class Model1Fragment extends BaseFragment<MoviesModel, MoviesPresenter> implements GetTop.View, PullToRefreshRecyclerView.OnRefreshAndLoadMoreListener {
     @BindView(R.id.pulltorefreshRecycleView)
     PullToRefreshRecyclerView pullToRefreshRecyclerView;
     private MoviesAdapter moviesAdapter;
@@ -27,11 +27,13 @@ public class Model1Fragment extends BaseFragment<MoviesModel, MoviesPresenter> i
     @Override
     public void init(View view) {
         moviesAdapter = new MoviesAdapter(null);
-        LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
-        pullToRefreshRecyclerView=view.findViewById(R.id.pulltorefreshRecycleView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        pullToRefreshRecyclerView = view.findViewById(R.id.pulltorefreshRecycleView);
         pullToRefreshRecyclerView.setLayoutManager(layoutManager);
         pullToRefreshRecyclerView.setAdapter(moviesAdapter);
         pullToRefreshRecyclerView.setPullRefreshEnabled(true);
+        pullToRefreshRecyclerView.setLoadMoreEnabled(true);
+        pullToRefreshRecyclerView.setRefreshAndLoadMoreListener(this);
     }
 
     @Override
@@ -42,7 +44,7 @@ public class Model1Fragment extends BaseFragment<MoviesModel, MoviesPresenter> i
     @Override
     public void requestData() {
         LogUtils.d("requestData");
-        ((MoviesPresenter)mPresenter).getTopMovies(0,200);
+        ((MoviesPresenter) mPresenter).getTopMovies(10);
     }
 
     @Override
@@ -52,8 +54,34 @@ public class Model1Fragment extends BaseFragment<MoviesModel, MoviesPresenter> i
 
     @Override
     public void refreshView(Movies movies) {
-        if(movies!=null&&movies.subjects!=null){
+        LogUtils.d("refreshView");
+        if (movies != null && movies.subjects != null) {
             moviesAdapter.setNewData(movies.subjects);
         }
+        pullToRefreshRecyclerView.refreshComplete();
+    }
+
+    @Override
+    public void loadMore(Movies movies) {
+        LogUtils.d("loadMore");
+        if (movies != null && movies.subjects != null) {
+            moviesAdapter.addData(movies.subjects);
+        }
+        pullToRefreshRecyclerView.loadMoreComplete();
+    }
+
+    @Override
+    public void onRecyclerViewRefresh() {
+        LogUtils.d("onRecyclerViewRefresh");
+
+        ((MoviesPresenter) mPresenter).getTopMovies(10);
+        pullToRefreshRecyclerView.refreshComplete();
+    }
+
+    @Override
+    public void onRecyclerViewLoadMore() {
+        LogUtils.d("onRecyclerViewLoadMore");
+
+        ((MoviesPresenter) mPresenter).loadMore(10);
     }
 }

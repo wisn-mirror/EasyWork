@@ -13,13 +13,37 @@ import top250Movies.bean.Movies;
  */
 
 public class MoviesPresenter extends GetTop.Presenter {
+    private int start=0;
     @Override
-    public void getTopMovies(int start, int count) {
+    public void getTopMovies(final int count) {
         getRxManager().addObserver(RequestManager.loadOnlyNetWork(mModel.getTopMovies(start, count),
                 new RxObservableListener<Movies>(mView) {
                     @Override
                     public void onNext(Movies result) {
+                        start=count*1;
                         mView.refreshView(result);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        super.onComplete();
+                    }
+
+                    @Override
+                    public void onError(NetWorkCodeException.ResponseThrowable e) {
+                        super.onError(e);
+                    }
+                }));
+    }
+
+    @Override
+    public void loadMore(final int count) {
+        getRxManager().addObserver(RequestManager.loadOnlyNetWork(mModel.getTopMovies(start, count),
+                new RxObservableListener<Movies>(mView) {
+                    @Override
+                    public void onNext(Movies result) {
+                        start=start+count;
+                        mView.loadMore(result);
                     }
 
                     @Override

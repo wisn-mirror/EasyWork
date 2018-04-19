@@ -18,9 +18,11 @@ public interface GetTop {
 
     interface View extends BaseView {
         void refreshView(Movies movies);
+        void loadMore(Movies movies);
     }
 
     abstract class Presenter extends BasePresenter<Model, View> {
-        public abstract void getTopMovies(int start, int count);
+        public abstract void getTopMovies( int count);
+        public abstract void loadMore( int count);
     }
 }

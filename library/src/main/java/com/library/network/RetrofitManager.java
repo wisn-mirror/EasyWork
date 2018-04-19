@@ -4,6 +4,7 @@ import android.text.TextUtils;
 
 import com.library.config.LibConfig;
 import com.library.network.Interceptor.HttpLoggingInterceptor;
+import com.library.utils.LogUtils;
 
 import java.io.File;
 import java.util.logging.Level;
@@ -22,9 +23,6 @@ public class RetrofitManager {
     private static Retrofit mRetrofit;
     private static Retrofit mNoCacheRetrofit;
 
-    public static void initHttpClient() {
-
-    }
 
     private static Retrofit getRetrofit() {
 
@@ -35,13 +33,13 @@ public class RetrofitManager {
                 HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor(LibConfig.HttpLogTAG);
                 httpLoggingInterceptor.setPrintLevel(HttpLoggingInterceptor.Level.BODY);
                 httpLoggingInterceptor.setColorLevel(Level.INFO);
-                builder.addInterceptor(httpLoggingInterceptor);
+//                builder.addInterceptor(httpLoggingInterceptor);
             }
 
             if (!TextUtils.isEmpty(LibConfig.baseUrl) && LibConfig.CONTEXT != null) {
                 //设置缓存
-                File httpCacheDirectory = new File(LibConfig.URL_CACHE);
-                builder.cache(new Cache(httpCacheDirectory, LibConfig.MAX_MEMORY_SIZE));
+//                File httpCacheDirectory = new File(LibConfig.URL_CACHE);
+//                builder.cache(new Cache(httpCacheDirectory, LibConfig.MAX_MEMORY_SIZE));
 //                builder.addInterceptor(RequestManager.getInterceptor());
             }
             OkHttpClient okHttpClient = builder.build();
@@ -81,6 +79,7 @@ public class RetrofitManager {
     }
 
     public static <T> T getApi(Class<T> clazz) {
+        LogUtils.d("getApi"+clazz);
         return getRetrofit().create(clazz);
     }
 
