@@ -1,9 +1,11 @@
 package com.library.network;
 
+import com.library.config.LibConfig;
 import com.library.rx.RxObservableListener;
 import com.library.rx.RxSchedulers;
 import com.library.rx.RxSubscriber;
 import com.library.utils.LogUtils;
+import com.library.utils.NetworkUtils;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -50,6 +52,7 @@ public class RequestManager {
         return observer;
     }
 
+
     public static Interceptor getInterceptor() {
         Interceptor interceptor = new Interceptor() {
             @Override
@@ -61,20 +64,20 @@ public class RequestManager {
                 CacheControl cacheControl = cacheBuilder.build();
 
                 Request request = chain.request();
-                if (!NetworkUtils.isNetworkConnected(Config.CONTEXT)) {
+                if (!NetworkUtils.isNetworkConnected(LibConfig.CONTEXT)) {
                     request = request.newBuilder()
                             .cacheControl(cacheControl)
                             .build();
                 }
                 Response originalResponse = chain.proceed(request);
-                if (NetworkUtils.isNetworkConnected(Config.CONTEXT)) {
+                if (NetworkUtils.isNetworkConnected(LibConfig.CONTEXT)) {
                     int maxAge = 0; // read from cache
                     return originalResponse.newBuilder()
                             .removeHeader("Pragma")
                             .header("Cache-Control", "public ,max-age=" + maxAge)
                             .build();
                 } else {
-                    long maxStale = Config.MAX_CACHE_SECONDS; // tolerate 4-weeks stale
+                    long maxStale = LibConfig.MAX_CACHE_SECONDS; // tolerate 4-weeks stale
                     return originalResponse.newBuilder()
                             .removeHeader("Pragma")
                             .header("Cache-Control", "public, only-if-cached, max-stale=" + maxStale)
