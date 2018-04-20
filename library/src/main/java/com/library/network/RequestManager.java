@@ -31,7 +31,10 @@ import okhttp3.ResponseBody;
  */
 
 public class RequestManager extends DataManagerImpl {
-
+    @Override
+    public <T> DisposableObserver<ResponseBody> httpRequest(RequestBuilder<T> requestBuilder) {
+        return request(requestBuilder);
+    }
 
     public <T> DisposableObserver<ResponseBody> request(RequestBuilder<T> builder) {
 

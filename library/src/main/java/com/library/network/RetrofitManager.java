@@ -40,7 +40,7 @@ public class RetrofitManager {
                 //设置缓存
                 File httpCacheDirectory = new File(LibConfig.URL_CACHE);
                 builder.cache(new Cache(httpCacheDirectory, LibConfig.MAX_MEMORY_SIZE));
-//                builder.addInterceptor(RequestManager.getInterceptor());
+                builder.addInterceptor(RequestManager.getInterceptor());
             }
             OkHttpClient okHttpClient = builder.build();
             mRetrofit = new Retrofit.Builder()
@@ -92,7 +92,7 @@ public class RetrofitManager {
     public static <T> T getNoCacheApiService(Class<T> tClass) {
         return getNoCacheRetrofit().create(tClass);
     }
-   /* public static <T> T getNoCacheApi(Class<T> clazz) {
-        return getNoCacheRetrofit().create(clazz);
-    }*/
+
+
+
 }
