@@ -24,5 +24,7 @@ public class LibConfig {
     //设置网络请求json通用解析类
     public static Class MClASS;
 
+    //SharePreference的配置文件名
+    public static String USER_CONFIG;
 
 }

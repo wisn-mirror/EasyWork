@@ -15,6 +15,6 @@ import io.reactivex.Observable;
 public class MoviesModel implements GetTop.Model {
     @Override
     public Observable<Movies> getTopMovies (int start, int count) {
-        return RetrofitManager.getApi(MoviesApi.class).getMovies(ApiUrl.getMoviesTop,start,count);
+        return RetrofitManager.getApiService(MoviesApi.class).getMovies(ApiUrl.getMoviesTop,start,count);
     }
 }

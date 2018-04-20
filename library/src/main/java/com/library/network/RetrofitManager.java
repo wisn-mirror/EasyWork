@@ -24,7 +24,7 @@ public class RetrofitManager {
     private static Retrofit mNoCacheRetrofit;
 
 
-    private static Retrofit getRetrofit() {
+    public  static Retrofit getRetrofit() {
 
         if (mRetrofit == null) {
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -54,7 +54,7 @@ public class RetrofitManager {
         return mRetrofit;
     }
 
-    private static Retrofit getNoCacheRetrofit() {
+    public  static Retrofit getNoCacheRetrofit() {
 
         if (mNoCacheRetrofit == null) {
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -78,12 +78,21 @@ public class RetrofitManager {
         return mNoCacheRetrofit;
     }
 
-    public static <T> T getApi(Class<T> clazz) {
-        LogUtils.d("getApi"+clazz);
+    public static <T> T getApiService(Class<T> clazz) {
+        LogUtils.d("getApiService"+clazz);
         return getRetrofit().create(clazz);
     }
-
-    public static <T> T getNoCacheApi(Class<T> clazz) {
-        return getNoCacheRetrofit().create(clazz);
+    /**
+     * 接口定义类,获取到没有缓存的retrofit
+     *
+     * @param tClass
+     * @param <T>
+     * @return
+     */
+    public static <T> T getNoCacheApiService(Class<T> tClass) {
+        return getNoCacheRetrofit().create(tClass);
     }
+   /* public static <T> T getNoCacheApi(Class<T> clazz) {
+        return getNoCacheRetrofit().create(clazz);
+    }*/
 }
