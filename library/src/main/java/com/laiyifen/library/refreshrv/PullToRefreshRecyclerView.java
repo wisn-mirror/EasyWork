@@ -17,7 +17,6 @@ import com.library.refreshrv.defaultview.DefaultArrowRefreshHeaderView;
 import com.library.refreshrv.defaultview.DefaultLoadMoreView;
 import com.library.refreshrv.refreshview.BaseLoadMoreView;
 import com.library.refreshrv.refreshview.BasePullToRefreshView;
-import com.library.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
