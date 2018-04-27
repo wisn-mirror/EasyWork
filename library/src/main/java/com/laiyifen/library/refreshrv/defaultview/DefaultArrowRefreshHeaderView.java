@@ -1,4 +1,4 @@
-package com.library.refreshrv.defaultview;
+package com.laiyifen.library.refreshrv.defaultview;
 
 import android.content.Context;
 import android.view.Gravity;
@@ -11,9 +11,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.library.R;
-import com.library.refreshrv.PullToRefreshRecyclerViewUtils;
-import com.library.refreshrv.refreshview.BasePullToRefreshView;
+import com.laiyifen.library.R;
+import com.laiyifen.library.refreshrv.PullToRefreshRecyclerViewUtils;
+import com.laiyifen.library.refreshrv.refreshview.BasePullToRefreshView;
 import com.wang.avi.AVLoadingIndicatorView;
 
 /**

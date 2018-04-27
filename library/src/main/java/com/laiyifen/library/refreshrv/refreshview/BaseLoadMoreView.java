@@ -1,4 +1,4 @@
-package com.library.refreshrv.refreshview;
+package com.laiyifen.library.refreshrv.refreshview;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

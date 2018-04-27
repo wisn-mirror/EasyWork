@@ -1,7 +1,7 @@
-package com.library.utils;
+package com.laiyifen.library.utils;
 
 import com.google.gson.Gson;
-import com.library.config.LibConfig;
+import com.laiyifen.library.config.LibConfig;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

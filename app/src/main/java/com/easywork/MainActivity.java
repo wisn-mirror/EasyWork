@@ -2,16 +2,11 @@ package com.easywork;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -19,16 +14,11 @@ import android.widget.Toast;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.easywork.adapter.FragmentAdapter;
 import com.easywork.dialog.CustomViewAnyPositionDialog;
-import com.easywork.dialog.CustomViewDialog;
 import com.easywork.dialog.DialogAdapter;
-import com.easywork.dialog.NormalFragmentDialog;
-import com.library.utils.LogUtils;
-
-import java.security.GeneralSecurityException;
+import com.laiyifen.library.utils.LogUtils;
 
 import base.BaseActivity;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import top250Movies.bean.Movies;
 
 public class MainActivity extends BaseActivity {
@@ -75,7 +65,7 @@ public class MainActivity extends BaseActivity {
 //                showToast("生成");
 //                NormalFragmentDialog.getInstance().show(getFragmentManager(),"aaa");
 //                CustomViewDialog.getInstance(true).show(getFragmentManager(),"bbb");
-//                CustomViewAnyPositionDialog.getInstance().show(getSupportFragmentManager(),"ccc");
+                CustomViewAnyPositionDialog.getInstance().show(getSupportFragmentManager(),"ccc");
                 /*new Thread(new Runnable() {
                     @Override
                     public void run() {

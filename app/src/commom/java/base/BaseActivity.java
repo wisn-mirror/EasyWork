@@ -7,10 +7,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
 
-import com.library.base.ABaseActivity;
-import com.library.mvp.BaseModel;
-import com.library.mvp.BasePresenter;
-import com.library.utils.LogUtils;
+import com.laiyifen.library.base.ABaseActivity;
+import com.laiyifen.library.mvp.BaseModel;
+import com.laiyifen.library.mvp.BasePresenter;
 
 import java.util.List;
 

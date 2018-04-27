@@ -1,4 +1,4 @@
-package com.library.config;
+package com.laiyifen.library.config;
 
 import android.content.Context;
 

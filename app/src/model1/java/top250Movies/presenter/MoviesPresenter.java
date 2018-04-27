@@ -1,9 +1,8 @@
 package top250Movies.presenter;
 
-import com.library.network.NetWorkCodeException;
-import com.library.network.RequestManager;
-import com.library.rx.RxManager;
-import com.library.rx.RxObservableListener;
+import com.laiyifen.library.network.NetWorkCodeException;
+import com.laiyifen.library.network.RequestManager;
+import com.laiyifen.library.rx.RxObservableListener;
 
 import top250Movies.GetTop;
 import top250Movies.bean.Movies;

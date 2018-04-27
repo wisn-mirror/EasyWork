@@ -1,6 +1,6 @@
-package com.library.network.Interceptor;
+package com.laiyifen.library.network.Interceptor;
 
-import com.library.utils.IOUtils;
+import com.laiyifen.library.utils.IOUtils;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

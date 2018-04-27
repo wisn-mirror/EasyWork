@@ -1,8 +1,8 @@
 package top250Movies;
 
-import com.library.mvp.BaseModel;
-import com.library.mvp.BasePresenter;
-import com.library.mvp.BaseView;
+import com.laiyifen.library.mvp.BaseModel;
+import com.laiyifen.library.mvp.BasePresenter;
+import com.laiyifen.library.mvp.BaseView;
 
 import top250Movies.bean.Movies;
 import io.reactivex.Observable;

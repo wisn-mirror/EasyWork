@@ -1,4 +1,4 @@
-package com.library.base;
+package com.laiyifen.library.base;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.library.mvp.BaseModel;
-import com.library.mvp.BasePresenter;
-import com.library.utils.ObjectGetByClassUtils;
+import com.laiyifen.library.mvp.BaseModel;
+import com.laiyifen.library.mvp.BasePresenter;
+import com.laiyifen.library.utils.ObjectGetByClassUtils;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;

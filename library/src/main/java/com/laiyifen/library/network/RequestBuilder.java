@@ -1,18 +1,12 @@
-package com.library.network;
+package com.laiyifen.library.network;
 
-import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 
 
 public class RequestBuilder {
 
-    private ReqType reqType = ReqType.DEFAULT_CACHE_LIST;
-    private Class clazz;
-    private String url;
+    public ReqType reqType = ReqType.DEFAULT_CACHE_LIST;
     public String baseUrl;
-    private HttpType httpType = HttpType.DEFAULT_GET;
-    private MultipartBody.Part part;
-    private boolean isDiskCacheNetworkSaveReturn;
     //用于自定义请求设置，比如设置超时时间
     public OkHttpClient.Builder okHttpClientBuilder;
 
@@ -36,15 +30,10 @@ public class RequestBuilder {
         DISK_CACHE_NETWORK_SAVE_RETURN_LIST
     }
 
-    public enum HttpType {
-        DEFAULT_GET,
-        DEFAULT_POST,
-        FIELDMAP_POST,
-        ONE_MULTIPART_POST
-    }
-
 
     public <T> T create(Class<T> service) {
         T apiService = RetrofitManager.getApiService(service, this);
+        //todo
+        return apiService;
     }
 }

@@ -1,14 +1,8 @@
 package com.easywork.dialog;
 
-import android.support.annotation.Nullable;
-import android.view.View;
-
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.easywork.R;
-import com.library.utils.LogUtils;
-import com.library.utils.ToastUtils;
 
 import java.util.List;
 

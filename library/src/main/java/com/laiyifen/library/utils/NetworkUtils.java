@@ -1,4 +1,4 @@
-package com.library.utils;
+package com.laiyifen.library.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

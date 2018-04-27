@@ -4,8 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.library.refreshrv.PullToRefreshRecyclerView
+    <com.laiyifen.library.refreshrv.PullToRefreshRecyclerView
         android:id="@+id/pulltorefreshRecycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    <com.tencent.smtt.sdk.WebView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

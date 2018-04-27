@@ -1,9 +1,9 @@
-package com.library.db;
+package com.laiyifen.library.db;
 
-import com.library.db.impl.DataManagerImpl;
-import com.library.network.RequestBuilder;
-import com.library.network.RequestManager;
-import com.library.utils.SharePreferenceUtils;
+import com.laiyifen.library.db.impl.DataManagerImpl;
+import com.laiyifen.library.network.RequestBuilder;
+import com.laiyifen.library.network.RequestManager;
+import com.laiyifen.library.utils.SharePreferenceUtils;
 
 import io.reactivex.observers.DisposableObserver;
 import okhttp3.ResponseBody;
@@ -12,7 +12,7 @@ import okhttp3.ResponseBody;
  * Created by Wisn on 2018/4/20 下午2:31.
  */
 
-public class DataManager extends DataManagerImpl{
+public class DataManager extends DataManagerImpl {
 
 
     private DataManagerImpl dataManagerStub;
@@ -65,6 +65,7 @@ public class DataManager extends DataManagerImpl{
      * @param key
      * @param claZZ
      * @param <T>
+     *
      * @return
      */
     @Override
@@ -77,8 +78,5 @@ public class DataManager extends DataManagerImpl{
         return dataManagerStub.queryByKey(key, clazz);
     }
 
-    @Override
-    public <T> DisposableObserver<ResponseBody> httpRequest(RequestBuilder<T> requestBuilder) {
-        return dataManagerStub.httpRequest(requestBuilder);
-    }
+
 }

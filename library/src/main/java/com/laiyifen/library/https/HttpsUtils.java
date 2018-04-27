@@ -1,6 +1,6 @@
-package com.library.https;
+package com.laiyifen.library.https;
 
-import com.library.utils.LogUtils;
+import com.laiyifen.library.utils.LogUtils;
 
 import java.io.IOException;
 import java.io.InputStream;

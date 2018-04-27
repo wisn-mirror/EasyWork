@@ -2,9 +2,9 @@ package base;
 
 import android.widget.Toast;
 
-import com.library.base.ABaseFragment;
-import com.library.mvp.BaseModel;
-import com.library.mvp.BasePresenter;
+import com.laiyifen.library.base.ABaseFragment;
+import com.laiyifen.library.mvp.BaseModel;
+import com.laiyifen.library.mvp.BasePresenter;
 
 /**
  * Created by Wisn on 2018/4/6 下午9:09.

@@ -1,6 +1,6 @@
-package com.library.rx;
+package com.laiyifen.library.rx;
 
-import com.library.network.NetWorkCodeException;
+import com.laiyifen.library.network.NetWorkCodeException;
 
 import io.reactivex.observers.DisposableObserver;
 

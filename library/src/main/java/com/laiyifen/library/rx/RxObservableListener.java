@@ -1,9 +1,9 @@
-package com.library.rx;
+package com.laiyifen.library.rx;
 
 import android.text.TextUtils;
 
-import com.library.mvp.BaseView;
-import com.library.network.NetWorkCodeException;
+import com.laiyifen.library.mvp.BaseView;
+import com.laiyifen.library.network.NetWorkCodeException;
 
 /**
  * Created by Wisn on 2018/4/2 下午5:02.

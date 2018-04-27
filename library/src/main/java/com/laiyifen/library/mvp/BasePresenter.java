@@ -1,6 +1,6 @@
-package com.library.mvp;
+package com.laiyifen.library.mvp;
 
-import com.library.rx.RxManager;
+import com.laiyifen.library.rx.RxManager;
 
 /**
  * Created by Wisn on 2018/4/2 下午1:29.

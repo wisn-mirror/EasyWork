@@ -1,6 +1,6 @@
-package com.library.rx;
+package com.laiyifen.library.rx;
 
-import com.library.network.NetWorkCodeException;
+import com.laiyifen.library.network.NetWorkCodeException;
 
 /**
  * Created by Wisn on 2018/4/2 下午4:50.

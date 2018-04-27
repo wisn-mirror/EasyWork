@@ -1,4 +1,4 @@
-package com.library.refreshrv;
+package com.laiyifen.library.refreshrv;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -13,10 +13,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.library.refreshrv.defaultview.DefaultArrowRefreshHeaderView;
-import com.library.refreshrv.defaultview.DefaultLoadMoreView;
-import com.library.refreshrv.refreshview.BaseLoadMoreView;
-import com.library.refreshrv.refreshview.BasePullToRefreshView;
+import com.laiyifen.library.refreshrv.defaultview.DefaultArrowRefreshHeaderView;
+import com.laiyifen.library.refreshrv.defaultview.DefaultLoadMoreView;
+import com.laiyifen.library.refreshrv.refreshview.BaseLoadMoreView;
+import com.laiyifen.library.refreshrv.refreshview.BasePullToRefreshView;
 
 import java.util.ArrayList;
 import java.util.List;

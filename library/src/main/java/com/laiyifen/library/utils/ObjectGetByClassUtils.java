@@ -1,4 +1,4 @@
-package com.library.utils;
+package com.laiyifen.library.utils;
 
 import java.lang.reflect.ParameterizedType;
 

@@ -1,4 +1,4 @@
-package com.library.base;
+package com.laiyifen.library.base;
 
 import android.support.v4.app.Fragment;
 

@@ -1,4 +1,4 @@
-package com.library.rx;
+package com.laiyifen.library.rx;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;

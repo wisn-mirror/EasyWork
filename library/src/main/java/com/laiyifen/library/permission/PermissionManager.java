@@ -1,4 +1,4 @@
-package com.library.permission;
+package com.laiyifen.library.permission;
 
 import android.app.Activity;
 import android.content.Intent;

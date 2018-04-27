@@ -1,4 +1,4 @@
-package com.library.refreshrv.defaultview;
+package com.laiyifen.library.refreshrv.defaultview;
 
 import android.content.Context;
 import android.view.Gravity;
@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.library.R;
-import com.library.refreshrv.refreshview.BaseLoadMoreView;
+import com.laiyifen.library.R;
+import com.laiyifen.library.refreshrv.refreshview.BaseLoadMoreView;
 
 /**
  * Created by Wisn on 2018/4/2 下午4:23.

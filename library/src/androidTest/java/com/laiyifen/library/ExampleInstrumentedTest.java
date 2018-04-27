@@ -1,4 +1,4 @@
-package com.library;
+package com.laiyifen.library;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.library.test", appContext.getPackageName());
+        assertEquals("com.laiyifen.library.test", appContext.getPackageName());
     }
 }

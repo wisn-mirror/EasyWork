@@ -1,11 +1,11 @@
-package com.library.utils;
+package com.laiyifen.library.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import com.library.config.LibConfig;
-import com.library.db.impl.DataManagerImpl;
+import com.laiyifen.library.config.LibConfig;
+import com.laiyifen.library.db.impl.DataManagerImpl;
 
 /**
  * Created by Wisn on 2018/4/20 下午2:33.

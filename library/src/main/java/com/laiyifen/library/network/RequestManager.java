@@ -1,12 +1,13 @@
-package com.library.network;
+package com.laiyifen.library.network;
 
-import com.library.config.LibConfig;
-import com.library.db.impl.DataManagerImpl;
-import com.library.rx.RxObservableListener;
-import com.library.rx.RxSchedulers;
-import com.library.rx.RxSubscriber;
-import com.library.utils.LogUtils;
-import com.library.utils.NetworkUtils;
+import com.laiyifen.library.config.LibConfig;
+import com.laiyifen.library.db.impl.DataManagerImpl;
+import com.laiyifen.library.rx.RxObservableListener;
+import com.laiyifen.library.rx.RxSchedulers;
+import com.laiyifen.library.rx.RxSubscriber;
+import com.laiyifen.library.utils.FileUtils;
+import com.laiyifen.library.utils.LogUtils;
+import com.laiyifen.library.utils.NetworkUtils;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -17,6 +18,7 @@ import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 /**
  * Created by Wisn on 2018/4/7 下午3:52.
@@ -85,17 +87,15 @@ public class RequestManager extends DataManagerImpl {
         }
         return null;
     }
+*/
 
-
-    *//**
+    /**
      * ============================自定义的缓存机制网络+本地json缓存===========================================
-     *//*
-
-    *//**
+     *
      * 设置缓存时间，没超过设置的时间不请求网络，只返回缓存数据
      * 返回List
-     *//*
-    public <T> DisposableObserver<ResponseBody> loadFormDiskResultListLimitTime(final RequestBuilder<T> builder, Observable<ResponseBody> observable) {
+     */
+   /* public <T> DisposableObserver<ResponseBody> loadFormDiskResultListLimitTime(final RequestBuilder builder, Observable<ResponseBody> observable) {
 
 
         if (!FileUtils.isCacheDataFailure(builder.getFilePath() + "/" + builder.getFileName(), builder.getLimtHours())) {
@@ -147,10 +147,10 @@ public class RequestManager extends DataManagerImpl {
         return observer;
     }
 
-    *//**
+    *//**//**
      * 设置缓存时间，没超过设置的时间不请求网络，只返回缓存数据
      * 返回Model
-     *//*
+     *//**//*
     public <T> DisposableObserver<ResponseBody> loadFormDiskModeLimitTime(final RequestBuilder<T> builder, Observable<ResponseBody> observable) {
 
         if (!FileUtils.isCacheDataFailure(builder.getFilePath() + "/" + builder.getFileName(), builder.getLimtHours())) {
@@ -202,10 +202,10 @@ public class RequestManager extends DataManagerImpl {
         return observer;
     }
 
-    *//**
+    *//**//**
      * 没有网络再请求缓存
      * 返回List
-     *//*
+     *//**//*
     private <T> DisposableObserver<ResponseBody> loadNoNetWorkWithCacheResultList(final RequestBuilder<T> builder, Observable<ResponseBody> observable) {
 
 
@@ -262,10 +262,10 @@ public class RequestManager extends DataManagerImpl {
     }
 
 
-    *//**
+    *//**//**
      * 没有网络再请求缓存
      * 返回Model
-     *//*
+     *//**//*
     private <T> DisposableObserver<ResponseBody> loadNoNetWorkWithCacheModel(final RequestBuilder<T> builder, Observable<ResponseBody> observable) {
 
         final Observable<T> observableC = Observable.create(new ObservableOnSubscribe<T>() {
@@ -318,9 +318,9 @@ public class RequestManager extends DataManagerImpl {
         return observer;
     }
 
-    *//**
+    *//**//**
      * 把结果保存到本地，根据标志是否返回数据，如果本地存在则不需要下载
-     *//*
+     *//**//*
     private <T> DisposableObserver<ResponseBody> loadOnlyNetWorkSaveList(final RequestBuilder<T> builder, Observable<ResponseBody> observable) {
 
         if (FileUtils.checkFileExists(builder.getFilePath() + "/" + builder.getFileName())) { // 已经在SD卡中存在
@@ -362,9 +362,9 @@ public class RequestManager extends DataManagerImpl {
     }
 
 
-    *//**
+    *//**//**
      * 把结果保存到本地，根据标志是否返回数据，如果本地存在则不需要下载,返回Model
-     *//*
+     *//**//*
     private <T> DisposableObserver<ResponseBody> loadOnlyNetWorkSaveModel(final RequestBuilder<T> builder, Observable<ResponseBody> observable) {
 
         if (FileUtils.checkFileExists(builder.getFilePath() + "/" + builder.getFileName())) { // 已经在SD卡中存在
@@ -405,9 +405,9 @@ public class RequestManager extends DataManagerImpl {
         return observer;
     }
 
-    *//**
+    *//**//**
      * 只通过网络返回数据，返回list
-     *//*
+     *//**//*
     private <T> DisposableObserver<ResponseBody> loadOnlyNetWorkList(final RequestBuilder<T> builder, Observable<ResponseBody> observable) {
         DisposableObserver<ResponseBody> observer = observable.compose(RxSchedulers.<ResponseBody>io_main())
                 .subscribeWith(new RxSubscriber<ResponseBody>() {
@@ -435,9 +435,9 @@ public class RequestManager extends DataManagerImpl {
     }
 
 
-    *//**
+    *//**//**
      * 只通过网络返回数据，返回Model
-     *//*
+     *//**//*
     private <T> DisposableObserver<ResponseBody> loadOnlyNetWorkModel(final RequestBuilder<T> builder, Observable<ResponseBody> observable) {
         DisposableObserver<ResponseBody> observer = observable.compose(RxSchedulers.<ResponseBody>io_main())
                 .subscribeWith(new RxSubscriber<ResponseBody>() {

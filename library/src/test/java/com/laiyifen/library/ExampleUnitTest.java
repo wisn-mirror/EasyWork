@@ -1,4 +1,4 @@
-package com.library;
+package com.laiyifen.library;
 
 import org.junit.Test;
 

@@ -1,11 +1,11 @@
-package com.library.network;
+package com.laiyifen.library.network;
 
 import android.text.TextUtils;
 
-import com.library.config.LibConfig;
-import com.library.https.HttpsUtils;
-import com.library.network.Interceptor.HttpLoggingInterceptor;
-import com.library.utils.LogUtils;
+import com.laiyifen.library.config.LibConfig;
+import com.laiyifen.library.https.HttpsUtils;
+import com.laiyifen.library.network.Interceptor.HttpLoggingInterceptor;
+import com.laiyifen.library.utils.LogUtils;
 
 import java.io.File;
 import java.util.logging.Level;
@@ -37,7 +37,7 @@ public class RetrofitManager {
         return mRetrofit;
     }
 
-    public static Retrofit buildRetrofit(OkHttpClient okHttpClient, String baseUrl) {
+    private static Retrofit buildRetrofit(OkHttpClient okHttpClient, String baseUrl) {
         return mRetrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -46,7 +46,7 @@ public class RetrofitManager {
                 .build();
     }
 
-    public static OkHttpClient getOkHttpClient(OkHttpClient.Builder builder, boolean existCache) {
+    private static OkHttpClient getOkHttpClient(OkHttpClient.Builder builder, boolean existCache) {
         if (builder == null) {
             builder = new OkHttpClient.Builder();
         }

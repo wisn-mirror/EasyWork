@@ -1,6 +1,6 @@
 package top250Movies.model;
 
-import com.library.network.RetrofitManager;
+import com.laiyifen.library.network.RetrofitManager;
 
 import top250Movies.GetTop;
 import top250Movies.api.ApiUrl;

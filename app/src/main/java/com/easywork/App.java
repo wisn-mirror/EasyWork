@@ -1,11 +1,9 @@
 package com.easywork;
 
 import android.app.Application;
-import android.app.Service;
-import android.content.Intent;
 import android.os.Environment;
 
-import com.library.config.LibConfig;
+import com.laiyifen.library.config.LibConfig;
 
 /**
  * Created by Wisn on 2018/4/8 下午4:36.

@@ -2,12 +2,10 @@ package top250Movies;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
-import android.widget.LinearLayout;
 
-import com.easywork.BitmapUtils;
 import com.easywork.R;
-import com.library.refreshrv.PullToRefreshRecyclerView;
-import com.library.utils.LogUtils;
+import com.laiyifen.library.refreshrv.PullToRefreshRecyclerView;
+import com.laiyifen.library.utils.LogUtils;
 
 import base.BaseFragment;
 import butterknife.BindView;

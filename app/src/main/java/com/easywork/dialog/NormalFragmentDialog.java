@@ -5,9 +5,8 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.widget.Toast;
 
-import com.library.utils.ToastUtils;
+import com.laiyifen.library.utils.ToastUtils;
 
 /**
  * Created by Wisn on 2018/4/15 下午8:02.

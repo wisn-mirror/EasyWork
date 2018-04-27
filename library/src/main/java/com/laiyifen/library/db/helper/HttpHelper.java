@@ -1,6 +1,6 @@
-package com.library.db.helper;
+package com.laiyifen.library.db.helper;
 
-import com.library.network.RequestBuilder;
+import com.laiyifen.library.network.RequestBuilder;
 
 import io.reactivex.observers.DisposableObserver;
 import okhttp3.ResponseBody;
@@ -10,6 +10,6 @@ import okhttp3.ResponseBody;
  */
 
 public interface HttpHelper {
-    <T> DisposableObserver<ResponseBody> httpRequest(RequestBuilder<T> requestBuilder);
+//    <T> DisposableObserver<ResponseBody> httpRequest(RequestBuilder<T> requestBuilder);
 }
 

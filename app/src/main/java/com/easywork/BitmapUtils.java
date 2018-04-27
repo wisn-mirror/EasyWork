@@ -37,7 +37,7 @@ import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
-import com.library.utils.LogUtils;
+import com.laiyifen.library.utils.LogUtils;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
